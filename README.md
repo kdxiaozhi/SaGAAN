@@ -20,3 +20,5 @@ You should make sure all files are in right positions.
 2. check generator and discriminator have the correct setting (here is Pavia dataset config)
 3. check line 384, make sure the output samples is in right file
 
+At last you should plot the generated samples and compare them with the original ones, like this 
+![SaGAAN](https://www.mdpi.com/remotesensing/remotesensing-12-00843/article_deploy/html/images/remotesensing-12-00843-g002-550.jpg)  
