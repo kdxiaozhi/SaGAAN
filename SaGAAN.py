@@ -344,7 +344,7 @@ with tf.Session() as sess:
                 # update discriminator
                 x_ = shuffled_set[iter * batch_size:(iter + 1) * batch_size].reshape([batch_size, 104, 1])
                 y_label_ = shuffled_label[iter * batch_size:(iter + 1) * batch_size].reshape([batch_size, 1, 9])
-                y_fill_ = y_label_ * np.ones([batch_size, img_size, 9])
+                y_fill = y_label_ * np.ones([batch_size, img_size, 9])
                 z_ = np.random.normal(0, 1, (batch_size, 1, z_dim))
                 loss_d_, _ = sess.run([D_loss, D_optim],
                                       {x: x_, z: z_, y_fill: y_fill_, y_label: y_label_, isTrain: True})
@@ -359,7 +359,7 @@ with tf.Session() as sess:
 
                 errD_fake = D_loss_fake.eval({z: z_, x: x_, y_label: y_label_, y_fill: y_fill_, isTrain: False})
                 errD_real = D_loss_real.eval({x: x_, y_label: y_label_, y_fill: y_fill_, isTrain: False})
-                errD_dis = D_loss_dis.eval({x: x_, y_label: y_label_, y_fill: y_fill_, isTrain: False})
+                errD_dis = D_loss_dis.eval({x: x_, y_label: y_label_, y_fill: y_fill, isTrain: False})
 
                 errG = G_loss.eval({x: x_, z: z_, y_label: y_label_, y_fill: y_fill_, isTrain: False})
 
